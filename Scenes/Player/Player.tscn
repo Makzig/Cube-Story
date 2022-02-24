@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Texture/icon.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -43,7 +43,10 @@ _data = [ Vector2( 0.0147059, 2.59432 ), 0.0, 0.0, 0, 0, Vector2( 0.960784, 1.12
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 32.5, 32.5 )
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 34.5, 34.5 )
+
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -78,3 +81,11 @@ shape = SubResource( 5 )
 [node name="Kayot_Time" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="Hit_box" type="Area2D" parent="." groups=["Player_Box"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hit_box"]
+position = Vector2( 0.5, 0.5 )
+shape = SubResource( 6 )
+
+[connection signal="area_entered" from="Hit_box" to="." method="_on_Hit_box_area_entered"]

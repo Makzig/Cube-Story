@@ -9,18 +9,18 @@ const JUMP_FORCE = 500
 
 
 #Переменная для эффекта кайота
-#var Kayot_floor = false
+var Kayot_time = false
 
 #Обычный прыжок(для батута и сферы)
-func Jump():
-	Move.y = -JUMP_FORCE
+func Jump(Force):
+	Move.y = -JUMP_FORCE * Force
 	$AnimationPlayer.play("Jump")
 
 
 #При нажатии кнопки прыжка
 func Jump_Input():
 	if Input.is_action_just_pressed("Jump") and  is_on_floor(): #Kayot_floor == true:
-		Jump()
+		Jump(1)
 
 
 
@@ -38,7 +38,9 @@ func _process(delta):
 	Moving()
 	Jump_Input()
 	
-		
+	
+	
+	
 	if !is_on_floor():
 		Move.y += (GRAVITY * delta)
 # warning-ignore:return_value_discarded
@@ -46,3 +48,12 @@ func _process(delta):
 
 
 
+
+
+func _on_Hit_box_area_entered(area):
+	if area.is_in_group("Enemy") or area.is_in_group("Blocks"):
+		Kill()
+
+
+func Kill():
+	print("OOO my god")

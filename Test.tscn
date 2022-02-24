@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Location/Location_1-Forest/Jump_area.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Location/Location_1-Forest/Spike_Block.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 472.25, 2.5 )
@@ -15,3 +17,9 @@ shape = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 378, 67 )
+
+[node name="Jump_area" parent="." instance=ExtResource( 2 )]
+position = Vector2( 642, 458 )
+
+[node name="Spike_Block" parent="." instance=ExtResource( 3 )]
+position = Vector2( 241, 466 )

@@ -36,7 +36,7 @@ position = Vector2( 528.75, 536 )
 shape = SubResource( 1 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 378, 67 )
+position = Vector2( 448, 416 )
 
 [node name="Jump_area" parent="." instance=ExtResource( 2 )]
 position = Vector2( 352, 499 )

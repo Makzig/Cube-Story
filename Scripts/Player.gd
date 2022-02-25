@@ -28,8 +28,12 @@ func Jump_Input():
 func Moving():
 	if Input.is_action_pressed("Left"):
 		Move.x = -SPEED
+		$AnimationPlayer.play("Walk")
+		$Sprite.flip_h = true
 	elif Input.is_action_pressed("Right"):
 		Move.x = SPEED
+		$AnimationPlayer.play("Walk")
+		$Sprite.flip_h = false
 	else:
 		Move.x = 0
 	if Input.is_action_pressed("Left") and Input.is_action_pressed("Right"):
@@ -44,6 +48,9 @@ func _process(delta):
 	
 	if !is_on_floor():
 		Move.y += (GRAVITY * delta)
+	elif is_on_floor():
+		#$AnimationPlayer.play("Walk")
+		pass
 # warning-ignore:return_value_discarded
 	move_and_slide(Move, Vector2.UP )
 

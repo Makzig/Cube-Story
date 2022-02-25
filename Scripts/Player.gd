@@ -32,7 +32,8 @@ func Moving():
 		Move.x = SPEED
 	else:
 		Move.x = 0
-
+	if Input.is_action_pressed("Left") and Input.is_action_pressed("Right"):
+		Move.x = 0
 
 func _process(delta):
 	Moving()
@@ -56,4 +57,5 @@ func _on_Hit_box_area_entered(area):
 
 
 func Kill():
-	print("OOO my god")
+# warning-ignore:return_value_discarded
+	get_tree().reload_current_scene()

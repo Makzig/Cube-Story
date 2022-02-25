@@ -1,16 +1,46 @@
-extends RigidBody2D
+extends KinematicBody2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var Move = Vector2()
+
+const GRAVITY = 900
+const JUMP_FORCE = 500
+
+var Speed = 150
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func Gravition(delta):
+	if !is_on_floor():
+		Move.y += GRAVITY * delta
+
+func _physics_process(delta):
+	
+	
+	
+	Gravition(delta)
+# warning-ignore:return_value_discarded
+	move_and_slide(Move, Vector2.UP)
+
+
+
+func _on_Left_body_entered(body):
+	if body.is_in_group("Player"):
+		Move.x = Speed
+
+
+
+func _on_Right_body_entered(body):
+	if body.is_in_group("Player"):
+		Move.x = -Speed
+
+
+func _on_Area_body_exited(body):
+	if body.is_in_group("Player"):
+		Move.x = 0
+
+
+
+func Jump(Force):
+	Move.y = -JUMP_FORCE * Force

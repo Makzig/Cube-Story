@@ -50,9 +50,9 @@ func _process(delta):
 	
 	if !is_on_floor():
 		Move.y += (GRAVITY * delta)
-	elif is_on_floor():
+	#elif is_on_floor():
 		#$AnimationPlayer.play("Walk")
-		pass
+		#pass
 # warning-ignore:return_value_discarded
 	move_and_slide(Move, Vector2.UP )
 

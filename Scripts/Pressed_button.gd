@@ -8,8 +8,10 @@ signal Realsead
 func _on_Pressed_button_body_entered(body):
 	if body.is_in_group("Player") or body.is_in_group("Case"):
 		emit_signal("Pressed")
+		$AnimationPlayer.play("Pressed")
 
 
 func _on_Pressed_button_body_exited(body):
 	if body.is_in_group("Player") or body.is_in_group("Case"):
 		emit_signal("Realsead")
+		$AnimationPlayer.play("Idle")

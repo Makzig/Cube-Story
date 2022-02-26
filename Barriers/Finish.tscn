@@ -272,8 +272,7 @@ modulate = Color( 0.74902, 0.74902, 0.74902, 1 )
 texture = SubResource( 4 )
 
 [node name="Black_finish" type="Sprite" parent="Sprite"]
-position = Vector2( 0, -0.5 )
-scale = Vector2( 1, 1 )
+position = Vector2( 0.5, -0.5 )
 texture = SubResource( 5 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

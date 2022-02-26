@@ -1,11 +1,11 @@
 extends KinematicBody2D
 
 
-const SPEED = 200.0
+const SPEED = 100.0
 var Move = Vector2()
 
-const GRAVITY = 1300
-const JUMP_FORCE = 500
+const GRAVITY = 650
+const JUMP_FORCE = 250
 
 
 #Переменная для эффекта кайота
@@ -36,8 +36,10 @@ func Moving():
 		$Sprite.flip_h = false
 	else:
 		Move.x = 0
+		$AnimationPlayer.play("Idle")
 	if Input.is_action_pressed("Left") and Input.is_action_pressed("Right"):
 		Move.x = 0
+		$AnimationPlayer.play("Idle")
 
 func _process(delta):
 	Moving()

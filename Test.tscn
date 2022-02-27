@@ -41,7 +41,7 @@ shape = SubResource( 1 )
 one_way_collision = true
 
 [node name="Jump_area" parent="." instance=ExtResource( 2 )]
-position = Vector2( 352, 499 )
+position = Vector2( 376, 520 )
 
 [node name="Spike_Block" parent="." instance=ExtResource( 3 )]
 position = Vector2( 241, 466 )

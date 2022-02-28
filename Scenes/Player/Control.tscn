@@ -14,8 +14,6 @@ extents = Vector2( 30, 30 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -8.0
-margin_right = -8.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -30,7 +28,7 @@ action = "Jump"
 
 [node name="Left" type="TouchScreenButton" parent="."]
 self_modulate = Color( 0.439216, 0.584314, 0.835294, 0.294118 )
-position = Vector2( 8, 328 )
+position = Vector2( 40, 328 )
 scale = Vector2( 1.75, 1.75 )
 normal = ExtResource( 1 )
 shape = SubResource( 2 )
@@ -39,7 +37,7 @@ action = "Left"
 
 [node name="Right" type="TouchScreenButton" parent="."]
 self_modulate = Color( 0.439216, 0.584314, 0.835294, 0.294118 )
-position = Vector2( 136, 328 )
+position = Vector2( 168, 328 )
 scale = Vector2( 1.75, 1.75 )
 normal = ExtResource( 1 )
 shape = SubResource( 3 )

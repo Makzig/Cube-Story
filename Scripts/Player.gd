@@ -7,7 +7,7 @@ var Move = Vector2()
 var Lives = true
 
 const GRAVITY = 650
-const JUMP_FORCE = 250
+const JUMP_FORCE = 200
 
 #Для анимаций
 onready var Anim_tree = $AnimationTree
@@ -98,14 +98,15 @@ func _on_Hit_box_area_entered(area):
 	#Если попадает в препятсвие
 	if area.is_in_group("Enemy") or area.is_in_group("Blocks"):
 		Kill()
-		$Die_Timer.start()
+		if is_on_floor():
+			$Die_Timer.start()
 		
 	#Если попадает в финиш, становится бездвижным
 	if area.is_in_group("Finish"):
 		Move = Vector2(0, 0)
 		Anim_playback.travel("Finish")
 		Finish = true
-		$Control.visible = false
+		
 
 
 func Kill():

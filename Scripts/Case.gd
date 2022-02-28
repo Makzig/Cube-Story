@@ -6,7 +6,7 @@ var Move = Vector2()
 const GRAVITY = 900
 const JUMP_FORCE = 500
 
-var Speed = 150
+var Speed = 200
 
 
 

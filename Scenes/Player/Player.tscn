@@ -149,7 +149,7 @@ region = Rect2( 32, 80, 16, 16 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "Jump"
-length = 0.3
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Particles2D:emitting")
 tracks/0/interp = 1
@@ -286,6 +286,7 @@ animation = "Walk"
 [sub_resource type="AnimationNodeStateMachineTransition" id=48]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=49]
+switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=50]
@@ -306,7 +307,7 @@ auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachine" id=54]
 states/Die/node = SubResource( 56 )
-states/Die/position = Vector2( 840, 323 )
+states/Die/position = Vector2( 841, 323 )
 states/Fall/node = SubResource( 37 )
 states/Fall/position = Vector2( 955, 478 )
 states/Finish/node = SubResource( 38 )
@@ -319,7 +320,7 @@ states/Walk/node = SubResource( 41 )
 states/Walk/position = Vector2( 827, 158 )
 transitions = [ "Idle", "Walk", SubResource( 42 ), "Walk", "Idle", SubResource( 43 ), "Idle", "Jump", SubResource( 48 ), "Jump", "Fall", SubResource( 49 ), "Fall", "Idle", SubResource( 50 ), "Walk", "Finish", SubResource( 51 ), "Fall", "Finish", SubResource( 52 ), "Jump", "Finish", SubResource( 53 ), "Idle", "Die", SubResource( 57 ), "Walk", "Die", SubResource( 58 ), "Fall", "Die", SubResource( 59 ), "Jump", "Die", SubResource( 60 ) ]
 start_node = "Idle"
-graph_offset = Vector2( 245, 152 )
+graph_offset = Vector2( 189, 274 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=55]
 
@@ -338,7 +339,6 @@ anims/Walk = SubResource( 7 )
 [node name="Particles2D" type="CPUParticles2D" parent="."]
 visible = false
 position = Vector2( 3, 31 )
-emitting = false
 amount = 20
 one_shot = true
 speed_scale = 3.0

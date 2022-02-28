@@ -98,8 +98,8 @@ func _on_Hit_box_area_entered(area):
 	#Если попадает в препятсвие
 	if area.is_in_group("Enemy") or area.is_in_group("Blocks"):
 		Kill()
-		if is_on_floor():
-			$Die_Timer.start()
+		#if is_on_floor():
+		$Die_Timer.start()
 		
 	#Если попадает в финиш, становится бездвижным
 	if area.is_in_group("Finish"):

@@ -5,5 +5,8 @@ var Pressed = false
 
 
 func _process(_delta):
-	$Sprite.visible = !Pressed
+	if Pressed == false:
+		$AnimationPlayer.play("Idle")
+	elif Pressed == true:
+		$AnimationPlayer.play("Pressed")
 	$CollisionShape2D.disabled = Pressed

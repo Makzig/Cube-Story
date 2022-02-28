@@ -1,9 +1,37 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://Scenes/Player/Character2.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Player/Control.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player/Character.png" type="Texture" id=4]
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 32, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 32, 16, 16 )
+
+[sub_resource type="Animation" id=31]
+resource_name = "Die"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ]
+}
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 4 )
@@ -23,6 +51,63 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ SubResource( 12 ) ]
+}
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 48, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=34]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 48, 16, 16 )
+
+[sub_resource type="Animation" id=35]
+resource_name = "Finish"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ SubResource( 32 ), SubResource( 33 ), SubResource( 34 ) ]
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 360, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0.3, 1 )
 }
 
 [sub_resource type="AtlasTexture" id=25]
@@ -104,6 +189,36 @@ tracks/0/keys = {
 "update": 0,
 "values": [ SubResource( 8 ) ]
 }
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath(".:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath(".:scale:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 4 )
@@ -146,63 +261,82 @@ extents = Vector2( 6.5, 5.5 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 7.5, 6.25 )
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=56]
+animation = "Die"
+
+[sub_resource type="AnimationNodeAnimation" id=37]
 animation = "Fall"
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "Finish"
+
+[sub_resource type="AnimationNodeAnimation" id=39]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=40]
 animation = "Jump"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=41]
 animation = "Walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
-switch_mode = 2
+[sub_resource type="AnimationNodeStateMachineTransition" id=42]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=43]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+[sub_resource type="AnimationNodeStateMachineTransition" id=50]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+[sub_resource type="AnimationNodeStateMachineTransition" id=51]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=29]
-switch_mode = 1
+[sub_resource type="AnimationNodeStateMachineTransition" id=52]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+[sub_resource type="AnimationNodeStateMachineTransition" id=53]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+[sub_resource type="AnimationNodeStateMachineTransition" id=57]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=32]
-switch_mode = 1
+[sub_resource type="AnimationNodeStateMachineTransition" id=58]
 
-[sub_resource type="AnimationNodeStateMachine" id=20]
-states/Fall/node = SubResource( 17 )
-states/Fall/position = Vector2( 476, 238 )
-states/Idle/node = SubResource( 28 )
-states/Idle/position = Vector2( 128, 387 )
-states/Jump/node = SubResource( 18 )
-states/Jump/position = Vector2( 272, 238 )
-states/Walk/node = SubResource( 22 )
-states/Walk/position = Vector2( 385, 387 )
-transitions = [ "Jump", "Fall", SubResource( 19 ), "Fall", "Walk", SubResource( 23 ), "Walk", "Jump", SubResource( 24 ), "Idle", "Jump", SubResource( 29 ), "Idle", "Walk", SubResource( 30 ), "Walk", "Idle", SubResource( 31 ), "Jump", "Idle", SubResource( 32 ) ]
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+
+[sub_resource type="AnimationNodeStateMachine" id=54]
+states/Die/node = SubResource( 56 )
+states/Die/position = Vector2( 840, 323 )
+states/Fall/node = SubResource( 37 )
+states/Fall/position = Vector2( 955, 478 )
+states/Finish/node = SubResource( 38 )
+states/Finish/position = Vector2( 1046, 323 )
+states/Idle/node = SubResource( 39 )
+states/Idle/position = Vector2( 619, 323 )
+states/Jump/node = SubResource( 40 )
+states/Jump/position = Vector2( 739, 478 )
+states/Walk/node = SubResource( 41 )
+states/Walk/position = Vector2( 827, 158 )
+transitions = [ "Idle", "Walk", SubResource( 42 ), "Walk", "Idle", SubResource( 43 ), "Idle", "Jump", SubResource( 48 ), "Jump", "Fall", SubResource( 49 ), "Fall", "Idle", SubResource( 50 ), "Walk", "Finish", SubResource( 51 ), "Fall", "Finish", SubResource( 52 ), "Jump", "Finish", SubResource( 53 ), "Idle", "Die", SubResource( 57 ), "Walk", "Die", SubResource( 58 ), "Fall", "Die", SubResource( 59 ), "Jump", "Die", SubResource( 60 ) ]
 start_node = "Idle"
-graph_offset = Vector2( -301, 198 )
+graph_offset = Vector2( 258, -65 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=21]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=55]
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
 script = ExtResource( 2 )
 
 [node name="Control" parent="." instance=ExtResource( 3 )]
-margin_left = -232.0
-margin_top = -111.0
-margin_right = -232.0
-margin_bottom = -111.0
-rect_scale = Vector2( 0.5, 0.5 )
+margin_left = -177.0
+margin_top = -90.0
+margin_right = -177.0
+margin_bottom = -90.0
+rect_scale = Vector2( 0.375, 0.375 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Die = SubResource( 31 )
 anims/Fall = SubResource( 13 )
+anims/Finish = SubResource( 35 )
 anims/Idle = SubResource( 27 )
 anims/Jump = SubResource( 1 )
 anims/RESET = SubResource( 16 )
@@ -246,12 +380,16 @@ shape = SubResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.25, 0.25 )
+zoom = Vector2( 0.188, 0.188 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 20 )
+tree_root = SubResource( 54 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 21 )
+parameters/playback = SubResource( 55 )
+
+[node name="Die_Timer" type="Timer" parent="."]
+wait_time = 0.7
 
 [connection signal="area_entered" from="Hit_box" to="." method="_on_Hit_box_area_entered"]
+[connection signal="timeout" from="Die_Timer" to="." method="_on_Die_Timer_timeout"]

@@ -5,7 +5,7 @@ extends Area2D
 func _on_Finish_body_entered(body):
 	if body.is_in_group("Player"):
 		$Finish_scene.start()
-		body.global_position = position
+		body.global_position = global_position
 
 
 

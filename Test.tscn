@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Location/Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Barriers/Jump_area.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Barriers/Spike.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Location/Player/Control.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Barriers/Position2D.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Barriers/batut_vetka.tscn" type="PackedScene" id=12]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Node2D
@@ -91,6 +92,9 @@ margin_bottom = -8.0
 
 [node name="Position2D" parent="." instance=ExtResource( 11 )]
 position = Vector2( 136, 456 )
+
+[node name="batut_vetka" parent="." instance=ExtResource( 12 )]
+position = Vector2( 639, 505 )
 
 [connection signal="Pressed" from="Pressed_button" to="." method="_on_Pressed_button_Pressed"]
 [connection signal="Realsead" from="Pressed_button" to="." method="_on_Pressed_button_Realsead"]

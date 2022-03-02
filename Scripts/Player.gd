@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-
+var count_jump = 1
 const SPEED = 100.0
 var Move = Vector2()
 
@@ -29,7 +29,8 @@ var Finish = false
 func Jump(Force):
 	Move.y = -JUMP_FORCE * Force
 	Anim_playback.travel("Jump")
-
+	if count_jump < 1.4:
+		count_jump +=0.1
 
 
 
@@ -85,7 +86,8 @@ func _process(delta):
 	
 	if !is_on_floor() and Finish == false:
 		Gravition(delta)
-	
+	if is_on_floor():
+		count_jump = 1
 
 # warning-ignore:return_value_discarded
 	move_and_slide(Move, Vector2.UP )
